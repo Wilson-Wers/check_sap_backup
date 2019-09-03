@@ -6,7 +6,7 @@
 # Contact: Email: wilsonwers@gmail.com                           #
 # Date: 2019-08-15                                               #
 # Description: Monitoramento backup SAP                          #
-# Use: check_sap_backup.sh 00 passwd BWP backup xsengine         #
+# Use: check_sap_backup.sh 00 secret BWP backup xsengine         #
 ##################################################################
 
 ID=${1}
@@ -15,6 +15,10 @@ BCO=${3}
 CMD=${4}
 ARG=${5}
 HOST=$(cat /etc/hostname)
+
+case ${ARG} in
+
+indexserver|xsengine)
 
 case ${CMD} in
 
@@ -44,5 +48,42 @@ echo $resp
 echo "ZBX_NOTSUPPORTED: Unsupported item key."
 exit 1
 ;;
+esac
+;;
+nameserver)
 
+case ${CMD} in
+
+backup)
+command="select state_name from SYS.M_BACKUP_PROGRESS where service_name = '${ARG}'"
+out="$(sudo /sbin/hdbsql -a -n ${HOST} -i ${ID} -d SYSTEMDB -u SYSTEM -p ${PASS} <<EOF
+$command ;
+exit
+EOF
+)"
+resp=$(echo "$out" | sed '1,6d' | sed '$d')
+[ "$resp" == '"successful"' ] && echo "0" | tail  -n1  || echo "1" | tail -n1
+exit 0
+;;
+
+backup_last)
+command="select SYS_END_TIME from SYS.M_BACKUP_PROGRESS where service_name = '${ARG}'"
+out="$(sudo /sbin/hdbsql -a -n ${HOST} -i ${ID} -d SYSTEMDB -u SYSTEM -p ${PASS} <<EOF
+$command ;
+exit
+EOF
+)"
+resp=$(echo "$out" | sed '1,6d' | sed '$d' | sed 's/\"//' | cut -d"." -f1)
+echo $resp
+;;
+*)
+echo "ZBX_NOTSUPPORTED: Unsupported item key."
+exit 1
+;;
+esac
+;;
+*)
+echo "ZBX_NOTSUPPORTED: Unsupported item key."
+exit 1
+;;
 esac
