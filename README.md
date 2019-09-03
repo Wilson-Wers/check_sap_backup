@@ -1,7 +1,6 @@
 # check_sap_backup
 
-```Os arquivos e scripts de configuração devem ser colocados nos diretórios corretos, conforme mostrado no repositório. 
-Os locais são para o Centos 7 com o Zabbix 3.2 instalado.
+```
 
 -> Importe este script para /usr/lib/zabbix/externalscripts.
 "check_sap_backup.sh"
