@@ -20,7 +20,7 @@
 "Template Template SAP Backup.xml"
 
 
-O Template possue as Macro que serão ajustada conforme os dados do host.
+O Template possue as macros abaixo que precisam ser ajustadas conforme dados do host.
 
 {$BCO} = PRD
 {$ID} =  00
