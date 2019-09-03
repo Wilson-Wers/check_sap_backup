@@ -31,6 +31,6 @@ Script via linha de comando.
 --> backup status indexserver/xsengine
 check_sap.sh 00 passwd PRD backup indexserver
 
---> backup data ultimo backup indexserver/xsengine
+--> backup data ultimo backup_last indexserver/xsengine
 check_sap.sh 00 passwd PRD backup indexserver
 ```
