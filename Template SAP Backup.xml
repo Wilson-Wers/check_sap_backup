@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2019-09-03T14:10:35Z</date>
+    <date>2019-09-03T19:42:44Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -24,7 +24,7 @@
             </applications>
             <items>
                 <item>
-                    <name>{$BCO} - STATUS INDEXSERVER</name>
+                    <name>{$BCO} - STATUS INDEXSERVER TENANT</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -67,7 +67,50 @@
                     <master_item/>
                 </item>
                 <item>
-                    <name>{$BCO} - STATUS XSENGINE</name>
+                    <name>{$BCO} - STATUS NAMESERVER SYSTEMDB</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>check_backup[{$ID},{$PASS},{$BCO},backup,nameserver]</key>
+                    <delay>3600s</delay>
+                    <history>90d</history>
+                    <trends>180d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>SAP Backup</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>SAP_BACKUP</name>
+                    </valuemap>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>{$BCO} - STATUS XSENGINE TENANT</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -110,7 +153,7 @@
                     <master_item/>
                 </item>
                 <item>
-                    <name>{$BCO} - LAST INDEXSERVER</name>
+                    <name>{$BCO} - LAST INDEXSERVER TENANT</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -153,7 +196,50 @@
                     <master_item/>
                 </item>
                 <item>
-                    <name>{$BCO} - LAST XSENGINE</name>
+                    <name>{$BCO} - LAST NAMESERVER SYSTEMDB</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>check_backup[{$ID},{$PASS},{$BCO},backup_last,nameserver]</key>
+                    <delay>21600s</delay>
+                    <history>90d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>SAP Backup</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>SAP_BACKUP</name>
+                    </valuemap>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>{$BCO} - LAST XSENGINE TENANT</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -221,7 +307,23 @@
             <expression>{Template SAP Backup:check_backup[{$ID},{$PASS},{$BCO},backup,indexserver].last()}&gt;0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>{HOSTNAME} - Backup Fail INDEXSERVER</name>
+            <name>{HOSTNAME} - Backup Fail INDEXSERVER TENANT</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>5</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template SAP Backup:check_backup[{$ID},{$PASS},{$BCO},backup,nameserver].last()}&gt;0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{HOSTNAME} - Backup Fail NAMESERVER SYSTEMDB</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -237,7 +339,7 @@
             <expression>{Template SAP Backup:check_backup[{$ID},{$PASS},{$BCO},backup,xsengine].last()}&gt;0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>{HOSTNAME} - Backup Fail XSENGINE</name>
+            <name>{HOSTNAME} - Backup Fail XSENGINE TENANT</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -291,6 +393,18 @@
                     <item>
                         <host>Template SAP Backup</host>
                         <key>check_backup[{$ID},{$PASS},{$BCO},backup,xsengine]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>5</drawtype>
+                    <color>0000BB</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template SAP Backup</host>
+                        <key>check_backup[{$ID},{$PASS},{$BCO},backup,nameserver]</key>
                     </item>
                 </graph_item>
             </graph_items>
